@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "material-password-input": [
+        "dist/material-password-input"
+      ],
+      "material-password-input/*": [
+        "dist/material-password-input/*"
+      ]
+    }
   }
 }

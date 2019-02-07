@@ -2,5 +2,42 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "material-password-input": {
+      "root": "projects/material-password-input",
+      "sourceRoot": "projects/material-password-input/src",
+      "projectType": "library",
+      "prefix": "intr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/material-password-input/tsconfig.lib.json",
+            "project": "projects/material-password-input/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/material-password-input/src/test.ts",
+            "tsConfig": "projects/material-password-input/tsconfig.spec.json",
+            "karmaConfig": "projects/material-password-input/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/material-password-input/tsconfig.lib.json",
+              "projects/material-password-input/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "material-password-input"
 }
