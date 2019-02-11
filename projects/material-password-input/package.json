@@ -1,6 +1,6 @@
 {
-  "name": "material-password-input",
-  "version": "0.0.1",
+  "name": "@interact.io/material-password-input",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/core": "^6.1.0",
     "@angular/common": "^6.1.0",
@@ -9,5 +9,12 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "@angular/material": "^6.4.7",
     "@ngx-translate/core": "^10.0.2"
-  }
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
