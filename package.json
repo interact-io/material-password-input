@@ -1,6 +1,6 @@
 {
   "name": "material-password-input",
-  "version": "0.0.4",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +12,6 @@
     "npm_pack": "cd dist/material-password-input && npm pack",
     "package": "npm run build_lib && npm run npm_pack"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^6.1.0",
     "@angular/material": "^6.4.7",
@@ -42,6 +41,6 @@
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~2.9.2"
   }
 }
