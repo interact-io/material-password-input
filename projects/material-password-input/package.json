@@ -1,6 +1,6 @@
 {
   "name": "@interact.io/material-password-input",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "peerDependencies": {
     "@angular/core": "^6.1.0",
     "@angular/common": "^6.1.0",
