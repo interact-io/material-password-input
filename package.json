@@ -1,6 +1,6 @@
 {
   "name": "material-password-input",
-  "version": "0.0.8",
+  "version": "8.0.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "@angular/animations": "^8.1.2",
-    "@angular/cdk": "^6.4.7",
+    "@angular/cdk": "^8.1.1",
     "@angular/common": "^8.1.2",
     "@angular/compiler": "^8.1.2",
     "@angular/core": "^8.1.2",
     "@angular/forms": "^8.1.2",
-    "@angular/material": "^6.4.7",
+    "@angular/material": "^8.1.1",
     "@angular/platform-browser": "^8.1.2",
     "@angular/platform-browser-dynamic": "^8.1.2",
     "@angular/router": "^8.1.2",
