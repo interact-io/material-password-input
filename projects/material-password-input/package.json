@@ -7,7 +7,7 @@
     "url": "git@github.com:interact-io/material-password-input.git"
   },
   "bugs": {
-     "url": "https://github.com/interact-io/material-password-input/issues"
+    "url": "https://github.com/interact-io/material-password-input/issues"
   },
   "homepage": "https://github.com/interact-io/material-password-input",
   "peerDependencies": {
