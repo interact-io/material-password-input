@@ -1,14 +1,18 @@
 import {
     ComponentFactoryResolver,
-    Directive,
+    Directive, DoCheck,
     ElementRef,
-    forwardRef, HostListener,
+    forwardRef, HostBinding, HostListener, Injector, Input, OnDestroy,
     OnInit,
     ViewContainerRef
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { PasswordShowToggleComponent } from './password-show-toggle/password-show-toggle.component';
 import { TogglePasswordService } from './toggle-password.service';
+import { MatFormField, MatFormFieldControl, MatInput } from '@angular/material';
+import { Subject } from 'rxjs';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Directive({
     selector: '[intrMatPassword]',
@@ -17,14 +21,38 @@ import { TogglePasswordService } from './toggle-password.service';
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => MatPasswordDirective),
             multi: true
+        },
+        {
+            provide: MatFormFieldControl,
+            useExisting: MatPasswordDirective
         }
-    ]
+    ],
+    host: {
+        '[id]': 'id',
+        '[attr.aria-describedby]': 'describedBy'
+    }
 })
-export class MatPasswordDirective implements ControlValueAccessor, OnInit {
+export class MatPasswordDirective implements ControlValueAccessor, OnInit, MatFormFieldControl<any>, OnDestroy, DoCheck {
+    stateChanges = new Subject<void>();
+    controlType = 'matPasswordInput';
+    ngControl;
+    focused = false;
+    errorState = false;
+
+    @HostBinding('attr.aria-describedby') describedBy = '';
+    setDescribedByIds(ids: string[]) {
+        this.describedBy = ids.join(' ');
+    }
+
+    onContainerClick(event: MouseEvent) {
+        if ((event.target as Element).tagName.toLowerCase() != 'input' && this.elRef.nativeElement.querySelector('input')) {
+            this.elRef.nativeElement.querySelector('input').focus();
+        }
+    }
+
     private readonly password = 'password';
     private readonly text = 'text';
 
-    disabled: boolean;
     onChange = (value: any) => {};
     onTouch = (value: any) => {};
 
@@ -40,9 +68,58 @@ export class MatPasswordDirective implements ControlValueAccessor, OnInit {
         private resolver: ComponentFactoryResolver,
         private viewContainerRef: ViewContainerRef,
         private elRef: ElementRef,
-        private togglePasswordService: TogglePasswordService
+        private togglePasswordService: TogglePasswordService,
+        private injector: Injector,
+        private fm: FocusMonitor
     ) {
         this.elRef.nativeElement.type = this.password;
+        fm.monitor(elRef.nativeElement, true).subscribe(origin => {
+            this.focused = !!origin;
+            this.stateChanges.next();
+        });
+    }
+
+    @Input()
+    get placeholder() {
+        return this._placeholder;
+    }
+    set placeholder(plh) {
+        this._placeholder = plh;
+        this.stateChanges.next();
+    }
+    public _placeholder: string;
+
+    @Input()
+    get required() {
+        return this._required;
+    }
+    set required(req) {
+        this._required = coerceBooleanProperty(req);
+        this.stateChanges.next();
+    }
+    public _required = false;
+
+    @Input()
+    get disabled() {
+        return this._disabled;
+    }
+    set disabled(dis) {
+        this._disabled = coerceBooleanProperty(dis);
+        this.stateChanges.next();
+    }
+    public _disabled = false;
+
+    static nextId = 0;
+    @HostBinding() id = `mat-password-directive-${MatPasswordDirective.nextId++}`;
+
+    get empty() {
+        const text = this.elRef.nativeElement.value.trim();
+        return !text;
+    }
+
+    @HostBinding('class.floating')
+    get shouldLabelFloat() {
+        return this.focused || !this.empty;
     }
 
     set value(value) {
@@ -56,7 +133,24 @@ export class MatPasswordDirective implements ControlValueAccessor, OnInit {
         this.viewContainerRef.insert(resolvedComponent.hostView);
         this.togglePasswordService.showPassword.subscribe(showPass => {
             this.elRef.nativeElement.type = showPass ? this.text : this.password;
-        })
+        });
+
+        this.ngControl = this.injector.get(NgControl);
+        if (this.ngControl != null) {
+            this.ngControl.valueAccessor = this;
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.stateChanges.complete();
+        this.fm.stopMonitoring(this.elRef.nativeElement);
+    }
+
+    ngDoCheck(): void {
+        if(this.ngControl) {
+            this.errorState = this.ngControl.invalid && this.ngControl.touched;
+            this.stateChanges.next();
+        }
     }
 
     registerOnChange(fn: any): void {
