@@ -128,9 +128,6 @@ export class MatPasswordDirective implements ControlValueAccessor, OnInit, MatFo
     }
 
     ngOnInit(): void {
-        const factory = this.resolver.resolveComponentFactory(PasswordShowToggleComponent);
-        const resolvedComponent = factory.create(this.viewContainerRef.parentInjector);
-        this.viewContainerRef.insert(resolvedComponent.hostView);
         this.togglePasswordService.showPassword.subscribe(showPass => {
             this.elRef.nativeElement.type = showPass ? this.text : this.password;
         });

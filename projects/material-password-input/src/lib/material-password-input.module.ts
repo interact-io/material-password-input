@@ -19,7 +19,7 @@ import { PasswordShowToggleComponent } from './password-show-toggle/password-sho
         MatButtonModule,
         MatIconModule,
     ],
-    exports: [MatPasswordDirective],
+    exports: [MatPasswordDirective, PasswordShowToggleComponent],
     entryComponents: [PasswordShowToggleComponent]
 })
 export class MaterialPasswordInputModule { }

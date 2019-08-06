@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TogglePasswordService } from '../toggle-password.service';
 
 @Component({
@@ -8,8 +8,10 @@ import { TogglePasswordService } from '../toggle-password.service';
 })
 export class PasswordShowToggleComponent {
     showPwd = false;
+
     constructor(private togglePassword: TogglePasswordService) { }
 
+    @HostListener('click')
     onClick() {
         this.showPwd = !this.showPwd;
         this.togglePassword.showPassword.next(this.showPwd);
