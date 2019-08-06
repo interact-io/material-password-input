@@ -19,7 +19,6 @@ import { PasswordShowToggleComponent } from './password-show-toggle/password-sho
         MatButtonModule,
         MatIconModule,
     ],
-    exports: [MatPasswordDirective, PasswordShowToggleComponent],
-    entryComponents: [PasswordShowToggleComponent]
+    exports: [MatPasswordDirective, PasswordShowToggleComponent]
 })
 export class MaterialPasswordInputModule { }
