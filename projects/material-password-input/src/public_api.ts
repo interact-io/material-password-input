@@ -3,4 +3,4 @@
  */
 
 export * from './lib/material-password-input.module';
-export * from './lib/password-input/password-input.component';
+export * from './lib/mat-password.directive';
