@@ -7,9 +7,8 @@ import {
     ViewContainerRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
-import { PasswordShowToggleComponent } from './password-show-toggle/password-show-toggle.component';
 import { TogglePasswordService } from './toggle-password.service';
-import { MatFormField, MatFormFieldControl, MatInput } from '@angular/material';
+import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
