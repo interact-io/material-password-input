@@ -1,10 +1,10 @@
 # interact.io password input directive
 ## Dependencies:
-* `@angular/core`: "^8.1.2",
-* `@angular/common`: "^8.1.2",
-* `@angular/animations`: "^8.1.2",
-* `@angular/cdk`: "8.1.1",
-* `@angular/material`: "^8.1.1"
+* `@angular/core`: "9.0.0",
+* `@angular/common`: "9.0.0",
+* `@angular/animations`: "9.0.0",
+* `@angular/cdk`: "^9.2.0",
+* `@angular/material`: "^9.2.0"
 ## API:
 * `intrMatPassword`: password input directive
 * `intr-password-show-toggle`: password show/hide toggle component
