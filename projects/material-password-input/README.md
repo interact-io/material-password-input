@@ -1,8 +1,8 @@
 # interact.io password input directive
 ## Dependencies:
-* `@angular/core`: "9.0.0",
-* `@angular/common`: "9.0.0",
-* `@angular/animations`: "9.0.0",
+* `@angular/core`: "9.1.9",
+* `@angular/common`: "9.1.9",
+* `@angular/animations`: "9.1.9",
 * `@angular/cdk`: "^9.2.0",
 * `@angular/material`: "^9.2.0"
 ## API:
