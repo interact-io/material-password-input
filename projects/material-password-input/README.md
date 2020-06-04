@@ -1,4 +1,6 @@
 # interact.io password input directive
+* If you're using Angular 9.x, please use version 10 of the lib.
+* If you're using v8 of angular, please use version 9 of the lib.
 ## Dependencies:
 * `@angular/core`: "9.1.9",
 * `@angular/common`: "9.1.9",
