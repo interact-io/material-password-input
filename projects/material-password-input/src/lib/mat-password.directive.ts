@@ -44,7 +44,7 @@ export class MatPasswordDirective implements ControlValueAccessor, OnInit, MatFo
     }
 
     onContainerClick(event: MouseEvent) {
-        if ((event.target as Element).tagName.toLowerCase() != 'input' && this.elRef.nativeElement.querySelector('input')) {
+        if (this.elRef && ((event.target as Element).tagName.toLowerCase() != 'input' && this.elRef.nativeElement.querySelector('input'))) {
             this.elRef.nativeElement.querySelector('input').focus();
         }
     }
@@ -71,11 +71,13 @@ export class MatPasswordDirective implements ControlValueAccessor, OnInit, MatFo
         private injector: Injector,
         private fm: FocusMonitor
     ) {
-        this.elRef.nativeElement.type = this.password;
-        fm.monitor(elRef.nativeElement, true).subscribe(origin => {
-            this.focused = !!origin;
-            this.stateChanges.next();
-        });
+        if (this.elRef) {
+            this.elRef.nativeElement.type = this.password;
+            fm.monitor(elRef.nativeElement, true).subscribe(origin => {
+                this.focused = !!origin;
+                this.stateChanges.next();
+            });
+        }
     }
 
     @Input()
