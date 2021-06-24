@@ -19,16 +19,16 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "p/test.ts",
-            "tsConfig": "/tsconfig.spec.json",
+            "main": "/test.ts",
+            "tsConfig": "/tsconfig.spec.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/material-password-input/tsconfig.lib.json",
-              "projects/material-password-input/tsconfig.spec.json"
+              "/projects/material-password-input/tsconfig.lib.json",
+              "/projects/material-password-input/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
