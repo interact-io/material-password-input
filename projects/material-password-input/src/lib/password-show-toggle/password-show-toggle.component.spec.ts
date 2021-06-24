@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordShowToggleComponent } from './password-show-toggle.component';
+import {MatIconModule} from '@angular/material/icon';
 
 describe('PasswordShowToggleComponent', () => {
     let component: PasswordShowToggleComponent;
@@ -8,7 +9,8 @@ describe('PasswordShowToggleComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-        declarations: [ PasswordShowToggleComponent ]
+        declarations: [ PasswordShowToggleComponent ],
+          imports: [MatIconModule]
         })
         .compileComponents();
     }));

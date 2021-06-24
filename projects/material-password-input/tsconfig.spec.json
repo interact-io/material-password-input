@@ -1,17 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["jest", "node"]
   },
-  "files": [
-    "src/test.ts"
-  ],
+  "files": ["src/test-setup.ts"],
   "include": [
     "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.spec.js",
+    "**/*.spec.jsx",
     "**/*.d.ts"
   ]
 }
