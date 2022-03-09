@@ -1,9 +1,6 @@
 module.exports = {
   preset: 'jest-preset-angular',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [
-    '<rootDir>/projects/material-password-input/src/test.ts'
-  ],
   moduleNameMapper: {
     '^lodash-es$': 'lodash'
   },
