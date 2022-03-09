@@ -10,7 +10,7 @@
       "prefix": "intr",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/material-password-input/tsconfig.lib.json",
             "project": "projects/material-password-input/ng-package.json"
@@ -19,20 +19,8 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "/test.ts",
+            "configPath": "/jest.config.js",
             "tsConfig": "/tsconfig.spec.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "/projects/material-password-input/tsconfig.lib.json",
-              "/projects/material-password-input/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
