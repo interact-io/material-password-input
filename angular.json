@@ -10,7 +10,7 @@
       "prefix": "intr",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/material-password-input/tsconfig.lib.json",
             "project": "projects/material-password-input/ng-package.json"
